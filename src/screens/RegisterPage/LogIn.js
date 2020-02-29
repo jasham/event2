@@ -10,6 +10,7 @@ import guser from '../../assets/images/guser.png'
 import puser from '../../assets/images/puser.png'
 import Footer from '../../components/Footer/Footer'
 import FooterDown from '../../components/Footer/FooterDown'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
@@ -138,9 +139,7 @@ color: ${properties.otherBlue};
 class LogIn extends Component {
   render() {
     return (<div>
-
-
-      <MainWrapper >
+    <MainWrapper >
         <SubWrapper1 >
           <SubCol1>
             <SubColLogo favicon={favicon} />
@@ -220,4 +219,16 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn
+const mapStateToProps = state => {
+  return {
+      
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+     
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

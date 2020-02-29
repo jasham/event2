@@ -10,6 +10,7 @@ import Footer from '../../components/Footer/Footer'
 import FooterDown from '../../components/Footer/FooterDown'
 import styled from 'styled-components'
 import ReactSearchBox from 'react-search-box'
+import CustomTable from '../../components/CustomTable/CustomTable'
 import { X } from "react-feather"
 import { Lock } from "react-feather"
 
@@ -40,12 +41,26 @@ const HeaderColumn = styled.div`
 const ListColumn = styled.div`
   width: 85%;
   border-bottom : 1px solid rgba(0,0,0,0.1);
-  width: 33%;
+  width: 100%;
   height: 30px;
   padding: 8px 8px 8px 24px;
 `
 
 class Attendees extends Component {
+  state={
+    tableHeader : [
+                { value : "Date", width : "31%", maxWidth : "20px"},
+                {value : "Name", width : "31%",  maxWidth : "20px"},
+                {value : "Company", width : "31%",  maxWidth : "20px"},
+                { value : "", width : "7%", maxWidth : "20px"}
+               
+            ],
+    tableData:[
+      {"date":"123","name":"shanti","Company":"covalense","action":""},
+      {"date":"123","name":"shanti","Company":"covalense","action":""},
+      {"date":"123","name":"shanti","Company":"covalense","action":""}
+    ]
+  }
   render() {
     return (
       <MainWrapper >
@@ -57,22 +72,10 @@ class Attendees extends Component {
               My Meetings
             </TextBox>
           </HeaderColumn>
-          <table style={{ backgroundColor: "white", width: "90%", }} >
-            <ListColumn>
-              <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
-              </tr>
-            </ListColumn>
-            <ListColumn>
-              <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-              </tr>
-            </ListColumn>
-          </table>
+           <CustomTable
+              tableHeader={this.state.tableHeader}
+              tableData={this.state.tableData}
+            />
 
         </SW1>
       </MainWrapper>

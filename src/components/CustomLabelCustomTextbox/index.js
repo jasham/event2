@@ -5,6 +5,8 @@ import DropdownComp from '../dropdown'
 import CustomInput from '../InputBox/InputBox'
 // import {properties} from '../../../conf/properties'
 import  TextAreaComponent from '../TextAreaComponent/TextAreaComponent'
+import  DropdownExampleSearchSelectionTwo from '../DropdownExampleSearchSelectionTwo/DropdownExampleSearchSelectionTwo'
+
 
 
 const MainWrapper = styled.div`
@@ -30,9 +32,9 @@ const CustomLabelCustomTextbox = (props) => {
             <Conatiner>
                 {
                     props.text === "dropdown" ?
-                                <DropdownComp
-                                    dropdownValue={props.dropdownValue}
-                                />
+                     <DropdownExampleSearchSelectionTwo
+                        options={props.options}
+                    />
                                 :
                     props.text==="textArea"?
                     <TextAreaComponent
@@ -40,11 +42,11 @@ const CustomLabelCustomTextbox = (props) => {
                     onChange={props.onChange}
                     />
                     :
-
                     <CustomInput
                         height={props.height}
                         onChange={props.onChange}
                         value={props.value}
+                        placeholder={props.placeholder}
                     />
                 }
             </Conatiner>

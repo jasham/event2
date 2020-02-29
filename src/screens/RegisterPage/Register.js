@@ -130,11 +130,16 @@ const InsideText = styled.div`
 `
 
 class Register extends Component {
+
+  onClick=()=>{
+    this.props.history.push('/registerGuest')
+  }
+  onClickPuser=()=>{
+    this.props.history.push('/registerUser')
+  }
   render() {
-    return (<div>
-
-
-      <MainWrapper >
+  return (<div>
+    <MainWrapper >
         <SubWrapper1 >
           <SubCol1>
             <SubColLogo favicon={favicon} />
@@ -150,7 +155,10 @@ class Register extends Component {
             <InsideCol>
               <UserDetail>
                 <InsideRow >
-                  <InsideImage guser={guser} />
+                  <InsideImage 
+                  guser={guser} 
+                  onClick={this.onClick}
+                  />
                   <InsideText>
                     <TextBox
                       ffamily={"semiBold"}
@@ -163,7 +171,10 @@ class Register extends Component {
               </UserDetail>
               <UserDetail>
                 <InsideRow >
-                  <InsideImage1 puser={puser} />
+                  <InsideImage1 
+                  puser={puser}
+                  onClick={this.onClickPuser}
+                   />
                   <InsideText>
                     <TextBox
                       ffamily={"semiBold"}

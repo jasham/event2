@@ -101,9 +101,7 @@ color: ${properties.otherBlue};
 class ForgotPage extends Component {
   render() {
     return (<div>
-
-
-      <MainWrapper >
+     <MainWrapper >
         <SubWrapper1 >
           <SubCol1>
             <SubColLogo favicon={favicon} />
@@ -150,7 +148,7 @@ class ForgotPage extends Component {
               ffamily={"regular"}
               color={properties.lightGrey}
               fontSize={fSize.medium}>
-              Forget it, <Link to={'/login'} color={properties.otherBlue}> send me back</Link> to the sign in screen.
+              Forget it, <Link to={'/login'} color={properties.otherBlue}>send me back</Link> to the sign in screen.
             </TextBox>
           </SubCol3>
         </SubWrapper1>

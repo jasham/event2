@@ -10,6 +10,7 @@ import Register from './screens/RegisterPage/Register'
 import Forgot from './screens/RegisterPage/ForgotPage'
 import RegisterGuest from './screens/RegisterPage/registerGuest'
 import RegisterUser from './screens/RegisterPage/registerUser'
+import Attendees from './screens/MyMeetingsPage'
 import 'semantic-ui-css/semantic.min.css'
 
 
@@ -29,9 +30,9 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
 )
 
 class App extends Component {
-    componentDidMount(){
-        WebSocketInstance.connect()
-    }
+    // componentDidMount(){
+    //     WebSocketInstance.connect()
+    // }
     render() {
       return (
           <div>
@@ -44,6 +45,7 @@ class App extends Component {
                             <Route path="/register" component={Register} />
                             <Route path="/registerUser" component={RegisterUser} />
                             <Route path="/registerGuest" component={RegisterGuest} />
+                            <Route path="/myMettingsPage" component={Attendees} />
                         </Switch>
                     </Router>
                 </Provider>

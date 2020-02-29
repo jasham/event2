@@ -29,6 +29,7 @@ const CustomText = (props) => {
             bold={props.bold}
             ffamily={props.ffamily}
             style={props.style}
+           
         >
             {props.children}
         </TextComp>

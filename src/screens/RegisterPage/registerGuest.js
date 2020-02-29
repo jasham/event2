@@ -13,6 +13,7 @@ import FooterDown from '../../components/Footer/FooterDown'
 import styled from 'styled-components'
 import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
+import DropdownExampleSearchSelectionTwo from '../../components/DropdownExampleSearchSelectionTwo/DropdownExampleSearchSelectionTwo'
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -118,17 +119,19 @@ class Register extends Component {
 
   state = {
     formFields : [
-      { label : "Name", type : "text", value : ""},
-      { label : "Last Name", type : "text", value : ""},
-      { label : "Position", type : "text", value : ""},
-      { label : "Company", type : "text", value : ""},
-      { label : "Email Address", type : "text", value : ""},
-      { label : "Phone Number", type : "text", value : ""},
-      { label : "Country", type : "text", value : ""},
-      { label : "Select Company Type", type : "dropdown", value : ""},
-      { label : "Password", type : "text", value : ""},
-      { label : "Confirm Password", type : "text", value : ""}
-    ]
+      { label : "Name", type : "text", value : "",placeholder:"Name"},
+      { label : "Last Name", type : "text", value : "",placeholder:"Last Name"},
+      { label : "Position", type : "text", value : "",placeholder:"Position"},
+      { label : "Company", type : "text", value : "",placeholder:"Company"},
+      { label : "Email Address", type : "text", value : "",placeholder:"Email Address"},
+      { label : "Phone Number", type : "text", value : "",placeholder:"Phone Number"},
+      { label : "Country", type : "text", value : "",placeholder:"Country"},
+      { label : "Select Company Type", type : "dropdown", value : "",placeholder:"Select Company Type"},
+      { label : "Password", type : "text", value : "",placeholder:"Password"},
+      { label : "Confirm Password", type : "text", value : "",placeholder:"Confirm Password"}
+    ],
+    
+  
   }
   render() {
     return (
@@ -151,16 +154,33 @@ class Register extends Component {
                       <LeftWrapper>
                         {
                           this.state.formFields.map((data) => {
+                            if(data.type==="text"){
                             return(
+
+                              
                               <CellWrapper>
+                                {/* {data.type==="text"? */}
                                 <CustomLabel 
                                     label={data.label}
+                                    placeholder={data.placeholder}
                                     height={"40px"}
                                     text={data.type}
-                                    dropdownValue={[]}
-                                  />
-                              </CellWrapper>
+                                    value={data.value}
+                                   />
+                               </CellWrapper>
                             )
+                          }
+                            else{
+                              return(
+                              <CellWrapper>
+                                <CustomLabel
+                                 options={""}
+                                />
+                             
+                             </CellWrapper>
+                              )
+                          
+                            }
                           })
                         }  
                       </LeftWrapper>
