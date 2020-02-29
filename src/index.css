@@ -1,0 +1,74 @@
+ body {
+  margin: 0px;
+ }
+/*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+@font-face {
+  font-family: SourceSansPro-Black;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-BlackItalic;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-Bold;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-BoldItalic;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-ExtraLight;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-ExtraLightItalic;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-ExtraLightItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-Italic;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-Light;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-LightItalic;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-Regular;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-SemiBold;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: SourceSansPro-SemiBoldItalic;
+  src: 
+      url('./assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf') format('truetype');
+}
