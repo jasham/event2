@@ -4,6 +4,7 @@ import { properties } from '../../conf/properties'
 
 
 const DropdownExampleSearchSelectionTwo = (props) => {
+  console.log(props,"props.dropdwon")
     switch(props.type){
       case 'file' : 
         return(
@@ -26,6 +27,8 @@ const DropdownExampleSearchSelectionTwo = (props) => {
             fluid
             selection
             options={props.options}
+            onChange={(e,data)=>props.onChange(e,data)}
+            value={props.value}
           />
         )
     }

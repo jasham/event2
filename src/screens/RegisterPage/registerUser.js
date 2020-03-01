@@ -11,10 +11,12 @@ import puser from '../../assets/images/puser.png'
 import Footer from '../../components/Footer/Footer'
 import FooterDown from '../../components/Footer/FooterDown'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
 import DropdownChoice from '../../components/DropdownChoice'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell,  } from "@fortawesome/free-regular-svg-icons"
 const MainWrapper = styled.div`
     width : 100%;
     height : 100%;
@@ -114,6 +116,38 @@ const InsideBodyHeader = styled.div`
 const CellWrapper = styled.div`
   width : 45%;
 `
+const UpperWrapper = styled.div`
+  width : 100%;
+  height : 200px;
+  /* background-color : orange; */
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  flex-direction : column;
+`
+
+const ImageBox = styled.div`
+  width : 160px;
+  height : 160px;
+  border-radius : 80px;
+  background-color : #F2F4F6;
+  box-shadow : 0px 0px 5px 2px rgba(0,0,0,0.2);
+  background-image : url(${props => props.imagePath});
+  background-repeat : no-repeat;
+  background-size : contain;
+  display :flex;
+  justify-content : center;
+  align-items : center;
+`
+
+const ImageIcon = styled.div`
+  position : relative;
+  /* background-color : red; */
+  width : 40px;
+  height : 40px;
+  top : -30px;
+  left : 80px;
+`
 
 class RegisterUser extends Component {
 
@@ -126,7 +160,28 @@ class RegisterUser extends Component {
       { label : "Email Address", type : "text", value : "",placeholder:"Email Address"},
       { label : "Phone Number", type : "text", value : "",placeholder:"Phone Number"},
       { label : "Country", type : "text", value : "",placeholder:"Country"},
-      { label : "Select Company Type", type : "dropdown", value : "",placeholder:"Select Company Type"},
+      { label : "Select Company Type", type : "dropdown", value : "",placeholder:"Select Company Type", options : [
+        {
+          key: 'SO',
+          text: 'Ship-owners',
+          value: 'Ship-owners'
+        },
+        {
+          key: 'SY',
+          text: 'Shipyards',
+          value: 'Shipyards'
+        },
+        {
+          key: 'PR',
+          text: 'Ports',
+          value: 'Ports'
+        },
+        {
+          key: 'EP',
+          text: 'Eqipments Provider',
+          value: 'Eqipments Provider'
+        }
+      ]},,
       { label : "Password", type : "text", value : "",placeholder:"Password"},
       { label : "Select User Type", type : "text", value : "",placeholder:"Select User Type"},
       { label : "Confirm Password", type : "text", value : "",placeholder:"Confirm Password"},
@@ -135,7 +190,14 @@ class RegisterUser extends Component {
     
   
   }
+  onChangeTextBox=(e,index)=>{
+   let { formFields} = this.state
+   formFields[index].value = e.target.value
+  this.setState({ formFields })
+  }
+
   render() {
+    console.log(this.state.formFields,"this.state.formFields")
     return (
       <MainWrapper>
           <SubWrapper>
@@ -155,19 +217,18 @@ class RegisterUser extends Component {
                     <LeftRightWrapper>
                       <LeftWrapper>
                         {
-                          this.state.formFields.map((data) => {
+                          this.state.formFields.map((data,index) => {
                             if(data.type==="text"){
                             return(
-
-                              
-                              <CellWrapper>
+                       <CellWrapper>
                                 {/* {data.type==="text"? */}
                                 <CustomLabel 
                                     label={data.label}
                                     placeholder={data.placeholder}
                                     height={"40px"}
                                     text={data.type}
-                                    value={data.value}
+                                    value={this.state.formFields[index].value}
+                                    onChange={(e) =>this.onChangeTextBox(e,index)}
                                    />
                                </CellWrapper>
                             )
@@ -175,9 +236,12 @@ class RegisterUser extends Component {
                             else{
                               return(
                               <CellWrapper>
-                                <CustomLabel
-                                 options={""}
-                                />
+                                 <CustomLabel
+                                    label={data.label}
+                                    options={data.options}
+                                    type={data.type}
+                                    text={data.type}
+                                  />
                              
                              </CellWrapper>
                               )
@@ -187,7 +251,17 @@ class RegisterUser extends Component {
                         }  
                       </LeftWrapper>
                       <RightWrapper>
-
+                      <UpperWrapper>
+                            <ImageBox
+                              imagePath={this.state.imagePath}
+                            />
+                            <ImageIcon
+                              onClick={this.selectImage}
+                            >
+                              <input type="file" id="file" ref="fileUploader" style={{display: "none"}} onChange={this.selectedImage}/>
+                              <FontAwesomeIcon icon={faBell}/>
+                            </ImageIcon>
+                        </UpperWrapper>
                       </RightWrapper>
                     </LeftRightWrapper>
                   </SubWrapperInsideBody>
@@ -198,4 +272,17 @@ class RegisterUser extends Component {
   }
 }
   
-export default RegisterUser
+const mapStateToProps = state => {
+  
+  return {
+   
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+   
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterUser)

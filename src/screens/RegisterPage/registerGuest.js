@@ -15,6 +15,7 @@ import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
 import DropdownChoice from '../../components/DropdownChoice'
 import ImageUploader from 'react-images-upload';
+import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell,  } from "@fortawesome/free-regular-svg-icons"
 
@@ -162,7 +163,7 @@ class Register extends Component {
       { label : "Email Address", type : "text", value : "",placeholder:"Email Address"},
       { label : "Phone Number", type : "text", value : "",placeholder:"Phone Number"},
       { label : "Country", type : "text", value : "",placeholder:"Country"},
-      { label : "Select Company Type", type : "dropdown", value : "",placeholder:"Select Company Type", options : [
+      { label : "Select Company Type", type : "dropdown", value : "",key:"",placeholder:"Select Company Type", options : [
         {
           key: 'SO',
           text: 'Ship-owners',
@@ -205,7 +206,27 @@ class Register extends Component {
       this.setState({ imagePath : window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})) })
      
     }
+    onChangeTextBox=(e,value,index,type)=>{
+      console.log(index,"alalal")
+     let { formFields} = this.state
+      if(type==="text"){
+          
+          formFields[index].value = e.target.value
+          this.setState({ formFields })
+        }
+      
+      else{
+       
+        let  dataValue  = value.options.find(o => { if(o.value ==value.value) return(o.key)})
+       
+      formFields[index].value = dataValue.value
+      formFields[index].key = dataValue.key
+        this.setState({ formFields })
+      
+      }
+  }
   render() {
+console.log(this.state.formFields,"this.state.formFields")
     return (
       <MainWrapper>
           <SubWrapper>
@@ -225,7 +246,8 @@ class Register extends Component {
                     <LeftRightWrapper>
                       <LeftWrapper>
                         {
-                          this.state.formFields.map((data) => {
+                          this.state.formFields.map((data,index) => {
+                            
                             if(data.type==="text"){
                               return(
                                 <CellWrapper>
@@ -234,9 +256,9 @@ class Register extends Component {
                                       placeholder={data.placeholder}
                                       height={"40px"}
                                       text={data.type}
-                                      value={data.value}
-                                      options={data.options}
-                                    />
+                                      value={this.state.formFields[index].value}
+                                      onChange={(e,data) =>this.onChangeTextBox(e,index)}
+                                     />
                                 </CellWrapper>
                               )
                             }else{
@@ -244,9 +266,12 @@ class Register extends Component {
                                 <CellWrapper>
                                   <CustomLabel
                                     label={data.label}
-                                    options={data.options}
                                     type={data.type}
                                     text={data.type}
+                                    options={data.options}
+                                    // key={data.options.key} 
+                                    value={this.state.formFields[index].value}
+                                    onChange={(e,value) =>this.onChangeTextBox(e,value,index,data.type)}
                                   />
                                 </CellWrapper>
                               )
@@ -279,4 +304,16 @@ class Register extends Component {
   }
 }
   
-export default Register
+const mapStateToProps = state => {
+return {
+   
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

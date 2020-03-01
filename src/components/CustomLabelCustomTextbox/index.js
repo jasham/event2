@@ -35,6 +35,9 @@ const CustomLabelCustomTextbox = (props) => {
                         <DropdownChoice
                             options={props.options}
                             type={"dropdown"}
+                            onChange={props.onChange}
+                            value={props.value}
+                           
                         />
                         
                         :
