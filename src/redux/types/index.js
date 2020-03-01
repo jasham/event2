@@ -18,3 +18,7 @@ export const GET_USER   =   'GET_USER'
 
 export const GET_MESSAGE_INVITATION = 'GET_MESSAGE_INVITATION'
 export const GET_MESSAGE_REQUEST = 'GET_MESSAGE_REQUEST'
+
+// GET venu details
+export const GET_VENU_DEAILS = 'GET_VENU_DEAILS'
+

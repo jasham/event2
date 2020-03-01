@@ -11,3 +11,5 @@ export const GET_USER_API   =   `${baseUrl}api/accounts/`
 export const GET_MESSAGE_INVITATION_API   =   `${baseUrl}api/accounts/`
 
 export const GET_MESSAGE_REQUEST_API   =   `${baseUrl}api/accounts/`
+
+export const GET_VENU_API = `${baseUrl}api/venu/`

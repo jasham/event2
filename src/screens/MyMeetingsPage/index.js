@@ -17,6 +17,7 @@ import { Tab } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import {getMessageInvitation} from '../../redux/actions/getMessageInvitation/getMessageInvitation'
 import {getMessageRequest} from '../../redux/actions/getMessageRequest/getMessageRequest'
+
 const MainWrapper = styled.div`
   padding : 24px 48px;
   display: flex;

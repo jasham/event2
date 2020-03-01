@@ -14,6 +14,8 @@ import {
     withGoogleMap
 } from "react-google-maps"
 import { constant } from '../../constants'  
+import {connect} from 'react-redux'
+import { getVenu } from '../../redux/actions/venu'
 
 
   const MainWrapper = styled.div`
@@ -164,6 +166,11 @@ import { constant } from '../../constants'
   ));
   
   class Home extends Component {
+
+    componentDidMount(){
+      this.props.getVenu()
+    }
+
     render() {
       return (
         <MainWrapper >
@@ -208,7 +215,11 @@ import { constant } from '../../constants'
                       color={properties.otherBlue}
                       fontSize={fSize.slarge}
                     >
-                      Mediterranean Shipping Summit
+                      {/* {this.props.venu[0]} */}
+                      {
+                        // console.log("Give details",this.props.venuDetails[0] ? this.props.venuDetails[0].venue_title : null)
+                        this.props.venuDetails[0] ? this.props.venuDetails[0].venue_title : null
+                      }
                       </TextBox>
                   </VenueHead>
                   <VenueTimeLocation>
@@ -231,7 +242,9 @@ import { constant } from '../../constants'
                               color={properties.otherBlue}
                               fontSize={fSize.medium}
                             >
-                              Istanbul,Turkey
+                              {
+                                this.props.venuDetails[0] ? this.props.venuDetails[0].region : null
+                              }
                              </TextBox>
                           </VenueDivCon11>
                         </VenueDivCon1>
@@ -249,7 +262,11 @@ import { constant } from '../../constants'
                               color={properties.littleLightGrey}
                               fontSize={fSize.medium}
                             >
-                              5 may 2020
+                              {
+                                
+                                  this.props.venuDetails[0] ? this.props.venuDetails[0].event_date : null
+                                
+                              }
                             </TextBox>
                           </VenueDivCon11>
                         </VenueDivCon1>
@@ -269,7 +286,9 @@ import { constant } from '../../constants'
                       color={properties.littleLightGrey}
                       fontSize={fSize.medium}
                     >
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dignissimos doloribus eum fugiat itaque laboriosam maiores nisi nostrum perspiciatis vero.
+                      {
+                        this.props.venuDetails[0] ? this.props.venuDetails[0].description : null
+                      }
                       </TextBox>
                   </VenueContent>
                 </VenueText>
@@ -289,5 +308,19 @@ import { constant } from '../../constants'
       )
     }
   }
+
   
-  export default Home
+const mapStateToProps = state => {
+  console.log("State venu details",state.venuDetails)
+  return {
+    venuDetails : state.venuDetails
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getVenu : () => dispatch(getVenu()),
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
