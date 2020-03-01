@@ -35,3 +35,17 @@ export const fWeight = {
   headerW: '400',
 }
 
+export const fontFamily = {
+  mRegular : 'Montserrat-Regular',
+  mBlack  : 'Montserrat-Black',
+  mBlackItalic : 'Montserrat-BlackItalic',
+  mBold :     'Montserrat-Bold',
+  mExtBold  : 'Montserrat-ExtraBold',
+  mExtLight : 'Montserrat-ExtraLight',
+  mExtLightItalic : 'Montserrat-ExtraLightItalic',
+  mItalic     : 'Montserrat-Italic',
+  mLight : 'Montserrat-Light',
+  mLightItalic : 'Montserrat-LightItalic',
+  mMedium : 'Montserrat-Medium',
+  mMediumItalic : 'Montserrat-MediumItalic'
+}
