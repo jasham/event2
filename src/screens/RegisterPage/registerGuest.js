@@ -15,7 +15,8 @@ import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
 import DropdownChoice from '../../components/DropdownChoice'
 import ImageUploader from 'react-images-upload';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBell,  } from "@fortawesome/free-regular-svg-icons"
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -96,7 +97,7 @@ const LeftWrapper = styled.div`
 const RightWrapper = styled.div`
   width : 30%;
   height : 100%;
-  background-color : green;
+  /* background-color : green; */
 `
 const BodyRow = styled.div`
   width : 100%;
@@ -115,6 +116,39 @@ const InsideBodyHeader = styled.div`
 
 const CellWrapper = styled.div`
   width : 45%;
+`
+
+const UpperWrapper = styled.div`
+  width : 100%;
+  height : 200px;
+  /* background-color : orange; */
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  flex-direction : column;
+`
+
+const ImageBox = styled.div`
+  width : 160px;
+  height : 160px;
+  border-radius : 80px;
+  background-color : #F2F4F6;
+  box-shadow : 0px 0px 5px 2px rgba(0,0,0,0.2);
+  background-image : url(${props => props.imagePath});
+  background-repeat : no-repeat;
+  background-size : contain;
+  display :flex;
+  justify-content : center;
+  align-items : center;
+`
+
+const ImageIcon = styled.div`
+  position : relative;
+  /* background-color : red; */
+  width : 40px;
+  height : 40px;
+  top : -30px;
+  left : 80px;
 `
 
 class Register extends Component {
@@ -153,8 +187,24 @@ class Register extends Component {
       { label : "Password", type : "text", value : "",placeholder:"Password"},
       { label : "Confirm Password", type : "text", value : "",placeholder:"Confirm Password"}
     ],
+    imagePath : ''
   
   }
+
+  selectImage = () => {
+    console.log("THello there",this.refs.fileUploader)
+    this.refs.fileUploader.click();
+    console.log("Image upload",this.refs.fileUploader.target)
+    }
+
+    selectedImage = (e) => {
+      var binaryData = [];
+      binaryData.push(this.refs.fileUploader.files[0]);
+      
+      console.log("Selected Image",URL.createObjectURL(this.refs.fileUploader.files[0]))
+      this.setState({ imagePath : window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})) })
+     
+    }
   render() {
     return (
       <MainWrapper>
@@ -206,7 +256,19 @@ class Register extends Component {
                         }  
                       </LeftWrapper>
                       <RightWrapper>
-                        <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
+                        <UpperWrapper>
+                            <ImageBox
+                              imagePath={this.state.imagePath}
+                            />
+                            <ImageIcon
+                              onClick={this.selectImage}
+                            >
+                              <input type="file" id="file" ref="fileUploader" style={{display: "none"}} onChange={this.selectedImage}/>
+                              <FontAwesomeIcon icon={faBell}/>
+                            </ImageIcon>
+                        </UpperWrapper>
+                      
+                        
                       </RightWrapper>
                     </LeftRightWrapper>
                   </SubWrapperInsideBody>
