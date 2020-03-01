@@ -17,16 +17,18 @@ import { Tab } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import {getMessageInvitation} from '../../redux/actions/getMessageInvitation/getMessageInvitation'
 import {getMessageRequest} from '../../redux/actions/getMessageRequest/getMessageRequest'
+import Buttons from '../../components/Buttons/Buttons'
 
 const MainWrapper = styled.div`
   padding : 24px 48px;
   display: flex;
   justify-content: center;
-  height: 53vh;
+  height: 100%;
   background-color: ${properties.bgGray};
+  flex-direction : column;
 `
 const SW1 = styled.div`
-  height: 80px;
+  /* height: 80px; */
   width: 95%;
   display: flex;
   flex-direction: column;
@@ -64,29 +66,30 @@ class Attendees extends Component {
                
             ],
     tableData:[
-      {"date":"123","name":"shanti","Company":"covalense","action":""},
-      {"date":"123","name":"shanti","Company":"covalense","action":""},
-      {"date":"123","name":"shanti","Company":"covalense","action":""},
-      {"date":"123","name":"shanti","Company":"covalense","action":""},
-      {"date":"123","name":"shanti","Company":"covalense","action":""},
-      {"date":"123","name":"shanti","Company":"covalense","action":""}
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""}
     ],
     tableHeaderInvitation : [
-      { value : "Person Name", width : "31%", maxWidth : "20px"},
-      {value : "Date", width : "31%",  maxWidth : "20px"},
+      { value : "Date", width : "31%", maxWidth : "20px"},
+      {value : "Name", width : "31%",  maxWidth : "20px"},
       {value : "Company", width : "31%",  maxWidth : "20px"},
       { value : "", width : "7%", maxWidth : "20px"}
      
   ],
   tableDataInvitation:[
-    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
-    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
-    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
-    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
-    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
-    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""}
+    {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""},
+      {"date":"123","name":"jasham","Company":"covalense","action":""}
   ],
-  active:true
+  active:true,
+  meetingRequestStatus : false
 
 }
 
@@ -128,10 +131,63 @@ showTable=()=>{
       
     )
 }
+
+showModal = () => {
+  return(
+    <div
+      style={{
+        position : "absolute",
+        top :0 ,
+        left : 0,
+        width : "100%",
+        height : "100%",
+        backgroundColor : "rgba(0,0,0,0.3)",
+        display : "flex",
+        justifyContent : "center",
+        alignItems : "center"
+      }}
+    >
+        <div
+          style={{
+            width : "60%",
+            height : "60%",
+            backgroundColor : "white",
+            boxShadow : "0px 0px 5px 2px rgba(0,0,0,0.3)",
+            borderRadius : 3
+          }}
+        >
+
+        </div>
+    </div>
+  )
+}
+
+requestMeeting = () => {
+  this.setState({ meetingRequestStatus : true })
+}
   render() {
     return (
       <MainWrapper >
+        
         <SW1>
+        <div
+          style={{
+            height : 40,
+            width : "100%",
+            // backgroundColor : "red",
+            justifyContent : "flex-end",
+            display : "flex",
+            position : "relative",
+            top : "41px"
+          }}
+        >
+          <Buttons
+            height={20}
+            onClick={this.requestMeeting}
+          >
+            Invite
+          </Buttons>
+        </div>
          {/* <HeaderColumn>
             <TextBox
               color={properties.littleLightGrey}
@@ -149,6 +205,7 @@ showTable=()=>{
               panes={this.showTable()}
             />
           </SW1>
+          {this.state.meetingRequestStatus ? this.showModal() : null }
       </MainWrapper>
     )
   }

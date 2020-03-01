@@ -15,14 +15,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import { getUserList } from '../../redux/actions/messages'
 import WebSocketInstance from '../../conf/websocket'
-
+import {
+  FloatingMenu,
+  MainButton,
+  ChildButton,
+} from 'react-floating-button-menu';
+// import MdAdd from '@material-ui/icons/add';
+// import MdClose from '@material-ui/icons/clear';
 const MainWrapper = styled.div`
   padding : 24px 14px;
   display: flex;
   justify-content: center;
   /* min-height: 100vh;
   max-height: 130vh; */
-  height : 400px;
+  height : 100%;
   background-color: ${properties.bgGray};
 `
 const SW1 = styled.div`
@@ -318,7 +324,8 @@ class Messages extends Component {
   }
   state = {
     currentMessageRow : '',
-    message: ""
+    message: "",
+    isOpen: false,
   }
 
   onClickMessage = (index) => {
@@ -567,6 +574,7 @@ class Messages extends Component {
 
           </MessageBox>
         </SW1>
+       
       </MainWrapper>
     )
   }

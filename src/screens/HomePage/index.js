@@ -208,7 +208,7 @@ import { getVenu } from '../../redux/actions/venu'
                     Venue
                       </TextBox>
                 </Timeline>
-                <VenueImage turkeyistanbul={turkeyistanbul} />
+                <VenueImage turkeyistanbul={this.props.venuDetails[0] ? this.props.venuDetails[0].venu_image : null} />
                 <VenueText>
                   <VenueHead>
                     <TextBox

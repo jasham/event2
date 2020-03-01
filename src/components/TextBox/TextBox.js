@@ -10,7 +10,7 @@ const TextComp = styled.div`
                                             props.fontSize === "big" ? "25px" : 
                                                 props.fontSize === "biggest" ? "30px" : props.fontSize 
                     } !important;
-    bold        :   ${props => props.bold};
+    font-weight    :   ${props => props.bold};
     font-family :   ${
                         props => props.ffamily === "regular" ? 'SourceSansPro-Regular'  :
                            props.ffamily === "black" ? 'SourceSansPro-Black' :

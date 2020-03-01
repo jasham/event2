@@ -15,8 +15,11 @@ import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
 import DropdownChoice from '../../components/DropdownChoice'
 import ImageUploader from 'react-images-upload';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon,  } from '@fortawesome/react-fontawesome'
 import { faBell,  } from "@fortawesome/free-regular-svg-icons"
+import CustomText from '../../components/TextBox/TextBox'
+import CustomButton from '../../components/Buttons/Buttons'
+import { FaCamera } from 'react-icons/fa'
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -50,7 +53,7 @@ const IconImage = styled.div`
     height : 60px;
     width : 60px;
 `
-const SubWrapperBody = styled.div`
+const SubWrapperBody = styled.form`
     width : 100%;
     height : 80%;
     /* background-color : red; */
@@ -62,6 +65,10 @@ const SubWrapperBody = styled.div`
     display : flex;
     justify-content : center;
     align-items : center;
+`
+const CheckBox = styled.input`
+  width: 16px;
+  height: 16px;
 `
 
 const SubWrapperInsideBody = styled.div`
@@ -205,6 +212,10 @@ class Register extends Component {
       this.setState({ imagePath : window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})) })
      
     }
+
+    onChange = (e,index) => {
+      console.log("Hello Man",e,index)
+    }
   render() {
     return (
       <MainWrapper>
@@ -225,7 +236,7 @@ class Register extends Component {
                     <LeftRightWrapper>
                       <LeftWrapper>
                         {
-                          this.state.formFields.map((data) => {
+                          this.state.formFields.map((data,index) => {
                             if(data.type==="text"){
                               return(
                                 <CellWrapper>
@@ -236,6 +247,7 @@ class Register extends Component {
                                       text={data.type}
                                       value={data.value}
                                       options={data.options}
+                                      onChange={(e) => this.onChange(e,index)}
                                     />
                                 </CellWrapper>
                               )
@@ -264,11 +276,55 @@ class Register extends Component {
                               onClick={this.selectImage}
                             >
                               <input type="file" id="file" ref="fileUploader" style={{display: "none"}} onChange={this.selectedImage}/>
-                              <FontAwesomeIcon icon={faBell}/>
+                              {/* <FontAwesomeIcon icon={faBell}/> */}
+                              <FaCamera />
                             </ImageIcon>
                         </UpperWrapper>
-                      
-                        
+                        {/* <CellWrapper> */}
+                          <CustomLabel 
+                              label={"Summary"}
+                              placeholder={"Summary"}
+                              text={"textArea"}
+                              height={"60px"}
+                              maxHeight={"60px"}
+                              // text={data.type}
+                              // value={data.value}
+                              // options={data.options}
+                            />
+                            <div
+                              style={{
+                                width : "100%",
+                                display : "flex",
+                                flexDirection : "row",
+                                marginTop : 10,
+                              }}
+                            >
+                              <CheckBox type="checkbox" />
+                              <div
+                                style={{
+                                  marginLeft : 10
+                                }}
+                              >
+                                <CustomText>
+                                  Agree the terms and policy
+                                </CustomText>
+                              </div>
+                            </div>
+                        {/* </CellWrapper> */}
+                            <div
+                              style={{
+                                display:"flex",
+                                justifyContent : "flex-end",
+                                width : "100%",
+                                marginTop : 30
+                              }}
+                            >
+                              <CustomButton 
+                                width={"100px"}
+                              >
+                                Submit  
+                              </CustomButton>
+                            </div>
                       </RightWrapper>
                     </LeftRightWrapper>
                   </SubWrapperInsideBody>

@@ -19,7 +19,6 @@ const TableConatiner = styled.div`
     width: 100%;
     height: 50px;
     padding: 8px 8px 8px 24px;
-
 `
 const TableHeader = styled.div`
     width : 100%;
@@ -53,12 +52,13 @@ const Cell = styled.div`
     display : flex;
     align-items : center;
     min-width: ${props => props.minWidth ? props.minWidth : "20px"};
-    border-bottom: 1px solid rgba(0,0,0,0.1)
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 `
 
 const TableBody = styled.div`
     width : 100%;
     height : 100%;
+    overflow-y : scroll;
 `
 const Footer = styled(TableHeader)``
 
