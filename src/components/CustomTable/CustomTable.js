@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 
 import CustomText from '../TextBox/TextBox'
-
+import {IconComponent} from '../IconComponent/IconComponent'
 
 
 
 const MainWrapper = styled.div`
-    width : 90%;
+    width : 98%;
     height : auto;
     display : flex;
     flex-direction : column;
@@ -15,9 +15,9 @@ const MainWrapper = styled.div`
 `
 
 const TableConatiner = styled.div`
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    // border-bottom: 1px solid rgba(0,0,0,0.1);
     width: 100%;
-    height: 40px;
+    height: 50px;
     padding: 8px 8px 8px 24px;
 
 `
@@ -26,8 +26,24 @@ const TableHeader = styled.div`
     height :  30px;
     display : flex;
     flex-direction : row;
-    align-items : center;
+    // align-items : center;
     justify-content : space-between;
+   
+    
+`
+const RowTr=styled.div`
+    width : 100%;
+    height :  30px;
+    display : flex;
+    flex-direction : row;
+    // align-items : center;
+    justify-content : space-between;
+    :nth-child(even) {
+        background-color: white;
+    };
+    :nth-child(odd) {
+        background-color: #F3F4F5;
+    };
     
 `
 
@@ -37,6 +53,7 @@ const Cell = styled.div`
     display : flex;
     align-items : center;
     min-width: ${props => props.minWidth ? props.minWidth : "20px"};
+    border-bottom: 1px solid rgba(0,0,0,0.1)
 `
 
 const TableBody = styled.div`
@@ -62,8 +79,12 @@ class CustomDataGrid extends Component {
                             minWidth={data.minWidth}
                         >
                             <CustomText
-                                bold={"bold"}
-                                size={"normal"}
+                                 style={{
+                                    display:"flex",
+                                    alignItmes:"center",
+                                    marginLeft: "29px"
+                                }}
+                                
                                 color={"#9aa0ac"}
                                 // color={properties.colors.blueColor}
                             >
@@ -95,22 +116,49 @@ class CustomDataGrid extends Component {
                                    
                                   
                                     return(
-                                        <TableHeader>
+                                        <RowTr>
                                             {
                                                 Object.values(data).map((data2,i)=>{
-                                                    console.log("data290",Object.keys(data)[i])
+                                                    console.log(data,"data290")
                                                     return(
                                                         <Cell
                                                             style={{
                                                                 width : this.props.tableHeader[i].width,
                                                                 height : "100%",
                                                                 textOverflow: "ellipsis",
-                                                               " border-bottom": "1px solid rgba(0,0,0,0.1)"
+                                                               
                                                                 }}
                                                             minWidth={this.props.tableHeader[i].minWidth}
-                                                        >
+                                                            >
                                                             {
-                                                                <CustomText >
+                                                                i===3?
+                                                                <div>
+                                                                    <IconComponent
+                                                                        icon={"x"}
+                                                                        style={{
+                                                                            color:"#9aa0ac",
+                                                                            marginRight:28
+                                                                            
+                                                                        }}
+                                                                      
+                                                                    /> 
+                                                                    <IconComponent
+                                                                        icon={"lock"}
+                                                                        style={{
+                                                                            color:"#9aa0ac"
+                                                                        }}
+                                                                        />
+                                                                   
+                                                                    </div>
+
+                                                                :
+                                                                <CustomText 
+                                                                style={{
+                                                                    display:"flex",
+                                                                    alignItmes:"center",
+                                                                    marginLeft: "29px"
+                                                                }}
+                                                                >
                                                                   {data2}
                                                                  </CustomText>
                                                             }
@@ -119,7 +167,7 @@ class CustomDataGrid extends Component {
                                                         
                                                 })
                                             }
-                                        </TableHeader>
+                                        </RowTr>
                                     )
                                     
                                         
