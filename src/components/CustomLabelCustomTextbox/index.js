@@ -5,7 +5,7 @@ import DropdownComp from '../dropdown'
 import CustomInput from '../InputBox/InputBox'
 // import {properties} from '../../../conf/properties'
 import  TextAreaComponent from '../TextAreaComponent/TextAreaComponent'
-import  DropdownExampleSearchSelectionTwo from '../DropdownExampleSearchSelectionTwo/DropdownExampleSearchSelectionTwo'
+import  DropdownChoice from '../DropdownChoice'
 
 
 
@@ -32,22 +32,24 @@ const CustomLabelCustomTextbox = (props) => {
             <Conatiner>
                 {
                     props.text === "dropdown" ?
-                     <DropdownExampleSearchSelectionTwo
-                        options={props.options}
-                    />
-                                :
-                    props.text==="textArea"?
-                    <TextAreaComponent
-                    value={props.value}
-                    onChange={props.onChange}
-                    />
-                    :
-                    <CustomInput
-                        height={props.height}
-                        onChange={props.onChange}
-                        value={props.value}
-                        placeholder={props.placeholder}
-                    />
+                        <DropdownChoice
+                            options={props.options}
+                            type={"dropdown"}
+                        />
+                        
+                        :
+                        props.text==="textArea"?
+                            <TextAreaComponent
+                                value={props.value}
+                                onChange={props.onChange}
+                            />
+                            :
+                            <CustomInput
+                                height={props.height}
+                                onChange={props.onChange}
+                                value={props.value}
+                                placeholder={props.placeholder}
+                            />
                 }
             </Conatiner>
         </MainWrapper>

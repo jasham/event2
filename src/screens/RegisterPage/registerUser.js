@@ -13,7 +13,7 @@ import FooterDown from '../../components/Footer/FooterDown'
 import styled from 'styled-components'
 import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
-import DropdownExampleSearchSelectionTwo from '../../components/DropdownExampleSearchSelectionTwo/DropdownExampleSearchSelectionTwo'
+import DropdownChoice from '../../components/DropdownChoice'
 
 const MainWrapper = styled.div`
     width : 100%;

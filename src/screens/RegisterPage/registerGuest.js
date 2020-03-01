@@ -13,7 +13,9 @@ import FooterDown from '../../components/Footer/FooterDown'
 import styled from 'styled-components'
 import { CustomInput } from '../../components/Input'
 import CustomLabel from '../../components/CustomLabelCustomTextbox'
-import DropdownExampleSearchSelectionTwo from '../../components/DropdownExampleSearchSelectionTwo/DropdownExampleSearchSelectionTwo'
+import DropdownChoice from '../../components/DropdownChoice'
+import ImageUploader from 'react-images-upload';
+
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -126,11 +128,31 @@ class Register extends Component {
       { label : "Email Address", type : "text", value : "",placeholder:"Email Address"},
       { label : "Phone Number", type : "text", value : "",placeholder:"Phone Number"},
       { label : "Country", type : "text", value : "",placeholder:"Country"},
-      { label : "Select Company Type", type : "dropdown", value : "",placeholder:"Select Company Type"},
+      { label : "Select Company Type", type : "dropdown", value : "",placeholder:"Select Company Type", options : [
+        {
+          key: 'SO',
+          text: 'Ship-owners',
+          value: 'Ship-owners'
+        },
+        {
+          key: 'SY',
+          text: 'Shipyards',
+          value: 'Shipyards'
+        },
+        {
+          key: 'PR',
+          text: 'Ports',
+          value: 'Ports'
+        },
+        {
+          key: 'EP',
+          text: 'Eqipments Provider',
+          value: 'Eqipments Provider'
+        }
+      ]},
       { label : "Password", type : "text", value : "",placeholder:"Password"},
       { label : "Confirm Password", type : "text", value : "",placeholder:"Confirm Password"}
     ],
-    
   
   }
   render() {
@@ -155,29 +177,28 @@ class Register extends Component {
                         {
                           this.state.formFields.map((data) => {
                             if(data.type==="text"){
-                            return(
-
-                              
-                              <CellWrapper>
-                                {/* {data.type==="text"? */}
-                                <CustomLabel 
-                                    label={data.label}
-                                    placeholder={data.placeholder}
-                                    height={"40px"}
-                                    text={data.type}
-                                    value={data.value}
-                                   />
-                               </CellWrapper>
-                            )
-                          }
-                            else{
                               return(
-                              <CellWrapper>
-                                <CustomLabel
-                                 options={""}
-                                />
-                             
-                             </CellWrapper>
+                                <CellWrapper>
+                                  <CustomLabel 
+                                      label={data.label}
+                                      placeholder={data.placeholder}
+                                      height={"40px"}
+                                      text={data.type}
+                                      value={data.value}
+                                      options={data.options}
+                                    />
+                                </CellWrapper>
+                              )
+                            }else{
+                              return(
+                                <CellWrapper>
+                                  <CustomLabel
+                                    label={data.label}
+                                    options={data.options}
+                                    type={data.type}
+                                    text={data.type}
+                                  />
+                                </CellWrapper>
                               )
                           
                             }
@@ -185,7 +206,7 @@ class Register extends Component {
                         }  
                       </LeftWrapper>
                       <RightWrapper>
-
+                        <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
                       </RightWrapper>
                     </LeftRightWrapper>
                   </SubWrapperInsideBody>
