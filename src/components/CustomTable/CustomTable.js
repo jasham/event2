@@ -132,7 +132,27 @@ class CustomDataGrid extends Component {
                                                             >
                                                             {
                                                                 i===3?
+                                                                this.props.active?
                                                                 <div>
+                                                                    <IconComponent
+                                                                        icon={"check"}
+                                                                        style={{
+                                                                            color:"#9aa0ac",
+                                                                            marginRight:28
+                                                                            
+                                                                        }}
+                                                                      
+                                                                    /> 
+                                                                    <IconComponent
+                                                                        icon={"x"}
+                                                                        style={{
+                                                                            color:"#9aa0ac"
+                                                                        }}
+                                                                        />
+                                                                   
+                                                                    </div>
+                                                                    :
+                                                                    <div>
                                                                     <IconComponent
                                                                         icon={"x"}
                                                                         style={{
@@ -142,12 +162,12 @@ class CustomDataGrid extends Component {
                                                                         }}
                                                                       
                                                                     /> 
-                                                                    <IconComponent
+                                                                    {/* <IconComponent
                                                                         icon={"lock"}
                                                                         style={{
                                                                             color:"#9aa0ac"
                                                                         }}
-                                                                        />
+                                                                        /> */}
                                                                    
                                                                     </div>
 

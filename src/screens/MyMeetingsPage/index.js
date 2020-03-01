@@ -14,6 +14,9 @@ import CustomTable from '../../components/CustomTable/CustomTable'
 import { X } from "react-feather"
 import { Lock } from "react-feather"
 import { Tab } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import {getMessageInvitation} from '../../redux/actions/getMessageInvitation/getMessageInvitation'
+import {getMessageRequest} from '../../redux/actions/getMessageRequest/getMessageRequest'
 const MainWrapper = styled.div`
   padding : 24px 48px;
   display: flex;
@@ -47,6 +50,10 @@ const ListColumn = styled.div`
 `
 
 class Attendees extends Component {
+  componentDidMount(){
+    this.props.getMessageInvitation()
+    this.props.getMessageRequest()
+  }
   state={
     tableHeader : [
                 { value : "Date", width : "31%", maxWidth : "20px"},
@@ -64,12 +71,21 @@ class Attendees extends Component {
       {"date":"123","name":"shanti","Company":"covalense","action":""}
     ],
     tableHeaderInvitation : [
-      { value : "Date", width : "31%", maxWidth : "20px"},
-      {value : "Name", width : "31%",  maxWidth : "20px"},
+      { value : "Person Name", width : "31%", maxWidth : "20px"},
+      {value : "Date", width : "31%",  maxWidth : "20px"},
       {value : "Company", width : "31%",  maxWidth : "20px"},
       { value : "", width : "7%", maxWidth : "20px"}
      
   ],
+  tableDataInvitation:[
+    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
+    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
+    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
+    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
+    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""},
+    {"Person Name":"shanthi","date":"10/12/2020","Company":"covalense","action":""}
+  ],
+  active:true
 
 }
 
@@ -96,12 +112,15 @@ showTable=()=>{
           menuItem: 'Meeting Invitations',
           render: () => 
           <Tab.Pane 
-          attached={false}> 
-          value
-          {/* <CustomTable
-          tableHeader={this.state.tableHeader}
-          tableData={this.state.tableData}
-        /> */}
+          attached={false}
+          style={{height:"300px"}}> 
+          
+          <CustomTable
+          tableHeader={this.state.tableHeaderInvitation}
+          tableData={this.state.tableDataInvitation}
+          active={this.state.active}
+        />
+
         </Tab.Pane>,
         }
       ]
@@ -134,4 +153,17 @@ showTable=()=>{
   }
 }
 
-export default Attendees
+const mapStateToProps = state => {
+  return {
+      
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getMessageInvitation:()=>dispatch(getMessageInvitation()),
+    getMessageRequest:()=>dispatch(getMessageRequest()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Attendees)

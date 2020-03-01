@@ -7,3 +7,7 @@ export const ENVIRONMENT_API = `${baseUrl}api/environment/`
 export const GET_USER_API   =   `${baseUrl}api/accounts/`
 
 
+
+export const GET_MESSAGE_INVITATION_API   =   `${baseUrl}api/accounts/`
+
+export const GET_MESSAGE_REQUEST_API   =   `${baseUrl}api/accounts/`
