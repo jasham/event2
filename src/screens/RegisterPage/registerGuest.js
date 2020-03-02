@@ -18,6 +18,12 @@ import ImageUploader from 'react-images-upload';
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell,  } from "@fortawesome/free-regular-svg-icons"
+import CheckBox from '../../components/checkbox/checkbox'
+import  CustomText from '../../components/TextBox/TextBox'
+import LinkButton from '../../components/LinkButton/LinkButton'
+import Buttons from '../../components/Buttons/Buttons'
+
+
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -128,6 +134,14 @@ const UpperWrapper = styled.div`
   align-items : center;
   flex-direction : column;
 `
+const LowerWrapper = styled.div`
+  width : 100%;
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  flex-direction : column;
+
+`
 
 const ImageBox = styled.div`
   width : 160px;
@@ -207,23 +221,21 @@ class Register extends Component {
      
     }
     onChangeTextBox=(e,value,index,type)=>{
-      console.log(index,"alalal")
      let { formFields} = this.state
       if(type==="text"){
-          
           formFields[index].value = e.target.value
           this.setState({ formFields })
         }
-      
       else{
-       
         let  dataValue  = value.options.find(o => { if(o.value ==value.value) return(o.key)})
-       
-      formFields[index].value = dataValue.value
-      formFields[index].key = dataValue.key
+        formFields[index].value = dataValue.value
+        formFields[index].key = dataValue.key
         this.setState({ formFields })
       
       }
+  }
+  onChangeTextArea=()=>{
+
   }
   render() {
 console.log(this.state.formFields,"this.state.formFields")
@@ -292,12 +304,55 @@ console.log(this.state.formFields,"this.state.formFields")
                               <FontAwesomeIcon icon={faBell}/>
                             </ImageIcon>
                         </UpperWrapper>
-                      
+                        <LowerWrapper>
+                         <CustomLabel
+                          label={"Summary"}
+                          placeholder={"Here can be your description"}
+                          height={"40px"}
+                          text={"textArea"}
+                          height="145px"
+                          value={this.state.summary}
+                          onChange={this.onChangeTextArea}
+                         />
+                        </LowerWrapper>
+                        <div style={{display:"flex"}}> 
+                        <CheckBox
+                          style={{
+                            marginTop:6,
+                            marginRight:5
+
+                          }}
+                        />
+                        <CustomText
+                            style={{
+                              marginTop:6,
+                              marginRight:5
+                            }}
+                            >
+                              Agree the
+                          </CustomText>
+                          <LinkButton
+                            style={{
+                              marginTop:6,
+                              
+                            }}
+                            >
+                          terms and policy
+                        </LinkButton>
+                        </div>
                         
-                      </RightWrapper>
+                        
+                       </RightWrapper>
                     </LeftRightWrapper>
+                    <div style={{display:"flex",justifyContent:"flex-end"}}>
+                    <Buttons>
+
+                  </Buttons>
+                  </div>
                   </SubWrapperInsideBody>
+                
               </SubWrapperBody>
+             
           </SubWrapper>
       </MainWrapper>
     )
