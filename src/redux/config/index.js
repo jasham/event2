@@ -1,7 +1,9 @@
 import axios from 'axios'
 import store  from '../store'
 
-export const baseUrl = 'http://35.154.214.120:8000/'
+// export const baseUrl = 'http://35.154.214.120:8000/'
+
+export const baseUrl = 'http://127.0.0.1:8000/'
 
 export const authData = store.getState().otp
 

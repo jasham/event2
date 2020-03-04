@@ -30,10 +30,10 @@ const CustomInput = (props) => (
         placeholder={props.placeholder}
         ffamily={props.ffamily}
         fontSize={props.fontSize} 
-        type={props.type}
         onChange={props.onChange}
         value={props.value}
         height={props.height}
+        type={props.secure ? "password" : ""}
     />
 )
 
