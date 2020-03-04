@@ -13,6 +13,7 @@ const LinkButton = (props) => {
     return(
         <StyledLink
         onClick={props.linkData}
+        style={props.style}
         >
             {props.children}
         </StyledLink>

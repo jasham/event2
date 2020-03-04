@@ -43,10 +43,18 @@ const CustomLabelCustomTextbox = (props) => {
                         :
                         props.text==="textArea"?
                             <TextAreaComponent
+                                placeholder={props.placeholder}
                                 value={props.value}
                                 onChange={props.onChange}
+<<<<<<< HEAD
                                 height={props.height}
                                 maxHeight={props.maxHeight}
+=======
+                                height ={ props.height}
+                                maxHeight ={props.maxHeight}
+                                   
+                                
+>>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
                             />
                             :
                             <CustomInput

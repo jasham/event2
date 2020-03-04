@@ -1,6 +1,10 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 import styled from 'styled-components'
+<<<<<<< HEAD
+=======
+// import { properties } from '../../../conf/properties'
+>>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
 
 
 const CustomButton = styled(Button)`

@@ -18,12 +18,21 @@ import ImageUploader from 'react-images-upload';
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell,  } from "@fortawesome/free-regular-svg-icons"
+<<<<<<< HEAD
 import CustomText from '../../components/TextBox/TextBox'
 import CustomButton from '../../components/Buttons/Buttons'
 import { FaCamera } from 'react-icons/fa'
 import { Form } from 'semantic-ui-react'
 import { registerUser } from '../../redux/actions/register'
 import { objectToFormData } from 'object-to-formdata';
+=======
+import CheckBox from '../../components/checkbox/checkbox'
+import  CustomText from '../../components/TextBox/TextBox'
+import LinkButton from '../../components/LinkButton/LinkButton'
+import Buttons from '../../components/Buttons/Buttons'
+
+
+>>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -138,6 +147,14 @@ const UpperWrapper = styled.div`
   align-items : center;
   flex-direction : column;
 `
+const LowerWrapper = styled.div`
+  width : 100%;
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  flex-direction : column;
+
+`
 
 const ImageBox = styled.div`
   width : 160px;
@@ -230,6 +247,7 @@ class Register extends Component {
     this.refs.fileUploader.click();
   }
 
+<<<<<<< HEAD
   selectedImage = (e) => {
     var binaryData = [];
     binaryData.push(this.refs.fileUploader.files[0]);
@@ -243,12 +261,31 @@ class Register extends Component {
     }else{
         let  dataValue  = value.options.find(o => { if(o.value ==value.value) return(o.key)})    
         console.log("I am here",value)  
+=======
+    selectedImage = (e) => {
+      var binaryData = [];
+      binaryData.push(this.refs.fileUploader.files[0]);
+      
+      console.log("Selected Image",URL.createObjectURL(this.refs.fileUploader.files[0]))
+      this.setState({ imagePath : window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})) })
+     
+    }
+    onChangeTextBox=(e,value,index,type)=>{
+     let { formFields} = this.state
+      if(type==="text"){
+          formFields[index].value = e.target.value
+          this.setState({ formFields })
+        }
+      else{
+        let  dataValue  = value.options.find(o => { if(o.value ==value.value) return(o.key)})
+>>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
         formFields[index].value = dataValue.value
         formFields[index].key = dataValue.key
         this.setState({ formFields })
     }
     console.log("Hello Jasham",formFields)
   }
+<<<<<<< HEAD
 
   checkBox = () => {
     this.setState({ terms : !this.state.terms })
@@ -312,6 +349,11 @@ class Register extends Component {
     // console.log("I am sending files",this.state.imagePath)
   }
 
+=======
+  onChangeTextArea=()=>{
+
+  }
+>>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
   render() {
     return (
       <MainWrapper>
@@ -380,6 +422,7 @@ class Register extends Component {
                               <FaCamera />
                             </ImageIcon>
                         </UpperWrapper>
+<<<<<<< HEAD
                           {/* <CellWrapper> */}
                           <CustomLabel 
                               label={"Summary"}
@@ -428,9 +471,57 @@ class Register extends Component {
                               </CustomButton>
                             </div>
                       </RightWrapper>
+=======
+                        <LowerWrapper>
+                         <CustomLabel
+                          label={"Summary"}
+                          placeholder={"Here can be your description"}
+                          height={"40px"}
+                          text={"textArea"}
+                          height="145px"
+                          value={this.state.summary}
+                          onChange={this.onChangeTextArea}
+                         />
+                        </LowerWrapper>
+                        <div style={{display:"flex"}}> 
+                        <CheckBox
+                          style={{
+                            marginTop:6,
+                            marginRight:5
+
+                          }}
+                        />
+                        <CustomText
+                            style={{
+                              marginTop:6,
+                              marginRight:5
+                            }}
+                            >
+                              Agree the
+                          </CustomText>
+                          <LinkButton
+                            style={{
+                              marginTop:6,
+                              
+                            }}
+                            >
+                          terms and policy
+                        </LinkButton>
+                        </div>
+                        
+                        
+                       </RightWrapper>
+>>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
                     </LeftRightWrapper>
+                    <div style={{display:"flex",justifyContent:"flex-end"}}>
+                    <Buttons>
+
+                  </Buttons>
+                  </div>
                   </SubWrapperInsideBody>
+                
               </SubWrapperBody>
+             
           </SubWrapper>
       </MainWrapper>
     )
