@@ -247,7 +247,6 @@ class Register extends Component {
     this.refs.fileUploader.click();
   }
 
-<<<<<<< HEAD
   selectedImage = (e) => {
     var binaryData = [];
     binaryData.push(this.refs.fileUploader.files[0]);
@@ -261,24 +260,6 @@ class Register extends Component {
     }else{
         let  dataValue  = value.options.find(o => { if(o.value ==value.value) return(o.key)})    
         console.log("I am here",value)  
-=======
-    selectedImage = (e) => {
-      var binaryData = [];
-      binaryData.push(this.refs.fileUploader.files[0]);
-      
-      console.log("Selected Image",URL.createObjectURL(this.refs.fileUploader.files[0]))
-      this.setState({ imagePath : window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"})) })
-     
-    }
-    onChangeTextBox=(e,value,index,type)=>{
-     let { formFields} = this.state
-      if(type==="text"){
-          formFields[index].value = e.target.value
-          this.setState({ formFields })
-        }
-      else{
-        let  dataValue  = value.options.find(o => { if(o.value ==value.value) return(o.key)})
->>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
         formFields[index].value = dataValue.value
         formFields[index].key = dataValue.key
         this.setState({ formFields })
