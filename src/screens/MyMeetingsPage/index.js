@@ -15,8 +15,8 @@ import { X } from "react-feather"
 import { Lock } from "react-feather"
 import { Tab } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import {getMessageInvitation} from '../../redux/actions/getMessageInvitation/getMessageInvitation'
-import {getMessageRequest} from '../../redux/actions/getMessageRequest/getMessageRequest'
+// import {getMessageInvitation} from '../../redux/actions/getMessageInvitation/getMessageInvitation'
+// import {getMessageRequest} from '../../redux/actions/getMessageRequest/getMessageRequest'
 import Buttons from '../../components/Buttons/Buttons'
 
 const MainWrapper = styled.div`
@@ -54,8 +54,8 @@ const ListColumn = styled.div`
 
 class Attendees extends Component {
   componentDidMount(){
-    this.props.getMessageInvitation()
-    this.props.getMessageRequest()
+    // this.props.getMessageInvitation()
+    // this.props.getMessageRequest()
   }
   state={
     tableHeader : [
@@ -219,8 +219,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getMessageInvitation:()=>dispatch(getMessageInvitation()),
-    getMessageRequest:()=>dispatch(getMessageRequest()),
+    // getMessageInvitation:()=>dispatch(getMessageInvitation()),
+    // getMessageRequest:()=>dispatch(getMessageRequest()),
   }
 }
 
