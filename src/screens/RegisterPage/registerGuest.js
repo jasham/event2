@@ -18,21 +18,12 @@ import ImageUploader from 'react-images-upload';
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell,  } from "@fortawesome/free-regular-svg-icons"
-<<<<<<< HEAD
 import CustomText from '../../components/TextBox/TextBox'
 import CustomButton from '../../components/Buttons/Buttons'
 import { FaCamera } from 'react-icons/fa'
 import { Form } from 'semantic-ui-react'
 import { registerUser } from '../../redux/actions/register'
 import { objectToFormData } from 'object-to-formdata';
-=======
-import CheckBox from '../../components/checkbox/checkbox'
-import  CustomText from '../../components/TextBox/TextBox'
-import LinkButton from '../../components/LinkButton/LinkButton'
-import Buttons from '../../components/Buttons/Buttons'
-
-
->>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
 
 const MainWrapper = styled.div`
     width : 100%;
@@ -183,7 +174,7 @@ class Register extends Component {
 
   state = {
     formFields : [
-      // { label : "Username", type : "text", value : "",placeholder:"Name"},
+      { label : "Username", type : "text", value : "",placeholder:"Name"},
       { label : "Name", type : "text", value : "",placeholder:"Name"},
       { label : "Last Name", type : "text", value : "",placeholder:"Last Name"},
       { label : "Position", type : "text", value : "",placeholder:"Position"},
@@ -266,7 +257,6 @@ class Register extends Component {
     }
     console.log("Hello Jasham",formFields)
   }
-<<<<<<< HEAD
 
   checkBox = () => {
     this.setState({ terms : !this.state.terms })
@@ -279,62 +269,23 @@ class Register extends Component {
   onSubmit = (e) => {
     e.preventDefault()
     let formNew1 = new FormData()
-    // let usrData = {
-    //   "username": this.state.formFields[0].value,
-    //   "first_name": this.state.formFields[1].value,
-    //   "last_name": this.state.formFields[2].value,
-    //   "password": this.state.formFields[10].value
-    // }
-
-    // formNew1.append('username',this.state.formFields[0].value)
-    formNew1.append('first_name',this.state.formFields[0].value)
-    formNew1.append('last_name',this.state.formFields[1].value)
-    formNew1.append('password',this.state.formFields[9].value)
-    formNew1.append("position", this.state.formFields[2].value)
-    formNew1.append("company",this.state.formFields[3].value)
-    formNew1.append("email_address",this.state.formFields[4].value)
-    formNew1.append("phone_number",this.state.formFields[5].value)
-    formNew1.append("country", this.state.formFields[6].value)
-    formNew1.append("company_type",this.state.formFields[7].key)
-    formNew1.append("user_type",this.state.formFields[8].key)
-    // formNew1.append("agreement_number","123456789")
+    formNew1.append("username",this.state.formFields[0].value)
+    formNew1.append('first_name',this.state.formFields[1].value)
+    formNew1.append('last_name',this.state.formFields[2].value)
+    formNew1.append('password',this.state.formFields[10].value)
+    formNew1.append("position", this.state.formFields[3].value)
+    formNew1.append("company",this.state.formFields[4].value)
+    formNew1.append("email_address",this.state.formFields[5].value)
+    formNew1.append("phone_number",this.state.formFields[6].value)
+    formNew1.append("country", this.state.formFields[7].value)
+    formNew1.append("company_type",this.state.formFields[8].key)
+    formNew1.append("user_type",this.state.formFields[9].key)
     formNew1.append("profile_pic",this.refs.fileUploader.files[0])
+    formNew1.append("summary",this.state.currentLabel)
     formNew1.append("terms","Yes")
-    
-  //   let tempData = {
-  //     "user": {
-  //         "username": this.state.formFields[0].value,
-  //         "first_name": this.state.formFields[1].value,
-  //         "last_name": this.state.formFields[2].value,
-  //         "password": this.state.formFields[10].value
-  //     },
-  //     "position": this.state.formFields[3].value,
-  //     "company": this.state.formFields[4].value,
-  //     "email_address": this.state.formFields[5].value,
-  //     "phone_number": this.state.formFields[6].value,
-  //     "country": this.state.formFields[7].value,
-  //     "company_type": this.state.formFields[8].key,
-  //     "user_type": this.state.formFields[9].key,
-  //     "agreement_number": "1234567",
-  //     "profile_pic": this.refs.fileUploader.files[0],
-  //     "summary": this.state.currentLabel,
-  //     "terms": this.state.terms ?  "Yes" : "No"
-  // }
-//  let formNew = objectToFormData(tempData)
     this.props.registerUser(formNew1)
-    // console.log("Hello Jasham ninja 09",formNew1.getAll('user'))
-    // console.log("Hello Jasham ninja",formNew)
-    // console.log("Hello Jasham ninja",formNew)
-    // console.log("Hello Jasham 19999",this.state.terms)
-    // console.log("Hello Jasham 13784",this.state.currentLabel)
-    // console.log("I am sending files",this.state.imagePath)
   }
 
-=======
-  onChangeTextArea=()=>{
-
-  }
->>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
   render() {
     return (
       <MainWrapper>
@@ -403,7 +354,6 @@ class Register extends Component {
                               <FaCamera />
                             </ImageIcon>
                         </UpperWrapper>
-<<<<<<< HEAD
                           {/* <CellWrapper> */}
                           <CustomLabel 
                               label={"Summary"}
@@ -452,53 +402,12 @@ class Register extends Component {
                               </CustomButton>
                             </div>
                       </RightWrapper>
-=======
-                        <LowerWrapper>
-                         <CustomLabel
-                          label={"Summary"}
-                          placeholder={"Here can be your description"}
-                          height={"40px"}
-                          text={"textArea"}
-                          height="145px"
-                          value={this.state.summary}
-                          onChange={this.onChangeTextArea}
-                         />
-                        </LowerWrapper>
-                        <div style={{display:"flex"}}> 
-                        <CheckBox
-                          style={{
-                            marginTop:6,
-                            marginRight:5
-
-                          }}
-                        />
-                        <CustomText
-                            style={{
-                              marginTop:6,
-                              marginRight:5
-                            }}
-                            >
-                              Agree the
-                          </CustomText>
-                          <LinkButton
-                            style={{
-                              marginTop:6,
-                              
-                            }}
-                            >
-                          terms and policy
-                        </LinkButton>
-                        </div>
-                        
-                        
-                       </RightWrapper>
->>>>>>> d3143cd8b477aba6b3657229307af62c5995dfc8
                     </LeftRightWrapper>
                     <div style={{display:"flex",justifyContent:"flex-end"}}>
-                    <Buttons>
+                      {/* <Buttons>
 
-                  </Buttons>
-                  </div>
+                      </Buttons> */}
+                    </div>
                   </SubWrapperInsideBody>
                 
               </SubWrapperBody>
